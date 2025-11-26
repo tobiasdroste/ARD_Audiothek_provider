@@ -1,52 +1,27 @@
 # ARD Audiothek Provider
 
-This project provides an API to search for audiobooks and radio plays from the ARD Audiothek. It is designed to be used as a metadata provider for **Audiobookshelf**.
+This is a simple custom metadata provider for Audiobookshelf that fetches audiobook information from the [ARD Audiothek](https://www.ardaudiothek.de/) (Audiothek of the public broadcasters in Germany).
 
-## Usage with Audiobookshelf
+## Features
+- Fetches metadata from Audiobooks from ARD Audiothek.
+- Cover images.
+- Title
+- Author
+- Description
+- Publisher
+- genre
+- language
 
-This service acts as a bridge between Audiobookshelf and the ARD Audiothek.
+## Installation
+1. Clone or download this repository.
+2. Navigate to the directory where the Dockerfile is located.
+3. Start the Docker container with the following command:
+   ```bash
+   docker-compose up --build -d
+   ```
+4. In Audiobookshelf, go to Settings > Metadata Providers.
+5. Add a new custom metadata provider and enter the URL of your running container (e.g., `http://localhost:8000`).
 
-1.  **Deploy this service** using Docker (see instructions below).
-2.  **Configure Audiobookshelf**:
-    *   Ensure this service is reachable from your Audiobookshelf instance (e.g., `http://localhost:8000` or `http://ard-audiothek-provider:8000` if in the same Docker network).
-    *   Use the endpoint `/search` for searching books.
-    *   Example query: `GET http://localhost:8000/search?query=Harry%20Potter`
+## Limitations
+- Only works when the audiobook is available on ARD Audiothek, keep in mind to run the match right after the downloading the audiobook.
 
-## Docker Support
-
-This project is packaged with Docker for easy deployment.
-
-### Prerequisites
-
-- Docker
-- Docker Compose
-
-### Running with Docker Compose
-
-1.  Build and start the container:
-
-    ```bash
-    docker-compose up --build
-    ```
-
-2.  The API will be available at `http://localhost:8000`.
-
-3.  To stop the container:
-
-    ```bash
-    docker-compose down
-    ```
-
-### Running with Docker directly
-
-1.  Build the image:
-
-    ```bash
-    docker build -t ard-audiothek-provider .
-    ```
-
-2.  Run the container:
-
-    ```bash
-    docker run -p 8000:8000 ard-audiothek-provider
-    ```
