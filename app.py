@@ -48,6 +48,7 @@ def search_books(query: str, author: Optional[str] = None):
     for item in items:
         # Extract basic info
         title = item.get("title")
+        title = title.replace('„', '').replace('“', '')
         synopsis = item.get("synopsis")
         
         # Duration is not directly available in programSet summary, usually sum of episodes
