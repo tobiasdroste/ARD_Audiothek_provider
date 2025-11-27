@@ -59,8 +59,8 @@ def search_books(query: str, author: Optional[str] = None):
         published_year = None
 
         # Extract images
-        image_url_template = item.get("image", {}).get("url")
-        cover_url = image_url_template.replace("{width}", "600") if image_url_template else None
+        image_url_template = item.get("squareImage", {}).get("url")
+        cover_url = image_url_template.replace("{width}", "1200") if image_url_template else None
 
         # Extract Author from title
         # Pattern often: "Title von Author" or "Author: Title"
