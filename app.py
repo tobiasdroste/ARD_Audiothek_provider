@@ -73,14 +73,12 @@ def search_books(query: str, author: Optional[str] = None):
                 parts = title.split(" von ")
                 if len(parts) > 1:
                     author_name = parts[1]
+                    clean_title = parts[0].strip()
             elif ":" in title:
                  parts = title.split(":")
                  if len(parts) > 1:
-                     # Heuristic: if the first part is shortish, it might be the author
-                     if len(parts[0]) < 30: 
-                         author_name = parts[0]
-
-        # Publisher
+                    author_name = parts[0]
+                    clean_title = parts[1].strip()
         # In programSet, it's under publicationService -> organizationName
         publisher = item.get("publicationService", {}).get("organizationName") or "ARD"
 
@@ -93,10 +91,6 @@ def search_books(query: str, author: Optional[str] = None):
         # Series Metadata
         # For program sets, the title itself is often the series name
         series_list = []
-        # If we detected an author "Title von Author", the "Title" part is likely the series/book name
-        clean_title = title
-        if author_name and f" von {author_name}" in title:
-            clean_title = title.replace(f" von {author_name}", "")
         
         # We can treat the program set as a series
         series_list.append(SeriesMetadata(series=clean_title, sequence=None))

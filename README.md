@@ -23,5 +23,6 @@ This is a simple custom metadata provider for Audiobookshelf that fetches audiob
 5. Add a new custom metadata provider and enter the URL of your running container (e.g., `http://localhost:8000`).
 
 ## Limitations
+- Title and Author extraction relies on heuristics based on common title formats.
 - Only works when the audiobook is available on ARD Audiothek, keep in mind to run the match right after the downloading the audiobook.
 
