@@ -24,5 +24,6 @@ This is a simple custom metadata provider for Audiobookshelf that fetches audiob
 
 ## Limitations
 - Title and Author extraction relies on heuristics based on common title formats.
+- The ARD Audiothek is weirdly organized. Currently only supports audiobooks that are not part of a Podcast with multiple different audiobooks (It's on the Roadmap to also support these).
 - Only works when the audiobook is available on ARD Audiothek, keep in mind to run the match right after the downloading the audiobook.
 
