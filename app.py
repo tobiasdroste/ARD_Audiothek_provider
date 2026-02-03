@@ -79,6 +79,7 @@ def search_books(query: str, author: Optional[str] = None):
                  if len(parts) > 1:
                     author_name = parts[0]
                     clean_title = parts[1].strip()
+            else: clean_title = title
         # In programSet, it's under publicationService -> organizationName
         publisher = item.get("publicationService", {}).get("organizationName") or "ARD"
 
